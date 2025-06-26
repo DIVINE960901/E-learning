@@ -1,0 +1,9 @@
+import request from '@/utils/request.js'
+import { useTokenStore} from '@/store/conster.js'
+
+export const AAA = () =>{
+    const tokenStore = useTokenStore()
+    tokenStrore.token
+    return request.get('/course/detail')
+}
+

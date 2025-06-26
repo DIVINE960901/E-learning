@@ -1,0 +1,29 @@
+<script setup>
+import { ref, computed } from 'vue';
+
+// 假设 fetchNewData 是从后端获取新数据的方法
+async function fetchNewData(commandText) {
+  // 这里应使用实际的API调用代码，例如 axios 或其他库
+  const response = await fetch('YOUR_API_URL', { method: 'POST', body: commandText });
+  const newData = await response.json();
+  return newData;
+}
+
+let loadedItemsCount = 5;
+const Commandtext = ref('');
+const data = ref([...]); // 初始化数据
+
+// ...（保持现有代码不变）
+
+const getCommand = async () => {
+  const command = Commandtext.value;
+  try {
+    const newData = await fetchNewData(command);
+    data.value = newData; // 更新数据
+    loadedItemsCount.value = 5; // 重置加载计数器
+  } catch (error) {
+    console.error(error);
+    alert('获取新数据时出错');
+  }
+};
+</script>
